@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <title>你的卡片</title>
+  <style>
+    body {
+      margin: 0;
+      background: url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      height: 100vh;
+      position: relative;
+      font-family: sans-serif;
+    }
+    .to {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      font-size: 24px;
+      color: #fff;
+    }
+    .message {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 28px;
+      color: #fff;
+      text-align: center;
+      width: 80%;
+    }
+    .from {
+      position: absolute;
+      bottom: 30px;
+      right: 30px;
+      font-size: 20px;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="to" id="toText"></div>
+  <div class="message" id="messageText"></div>
+  <div class="from" id="fromText"></div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    document.getElementById('toText').textContent = `To: ${params.get('to')}`;
+    document.getElementById('messageText').textContent = params.get('message');
+    document.getElementById('fromText').textContent = `From: ${params.get('from')}`;
+  </script>
+</body>
+</html>
