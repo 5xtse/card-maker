@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <title>卡片製作</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .card-input {
+      background: rgba(255, 255, 255, 0.85);
+      padding: 30px;
+      border-radius: 10px;
+      text-align: left;
+      width: 400px;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    textarea {
+      height: 120px;
+      resize: vertical;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="card-input">
+    <h2>製作你的卡片</h2>
+    <label for="to">To</label>
+    <input type="text" id="to" placeholder="輸入收件人" />
+
+    <label for="message">Content</label>
+    <textarea id="message" placeholder="輸入內容"></textarea>
+
+    <label for="from">From</label>
+    <input type="text" id="from" placeholder="輸入寄件人" />
+
+    <button onclick="createCard()">下一頁</button>
+  </div>
+
+  <script>
+    function createCard() {
+      const to = document.getElementById('to').value;
+      const message = document.getElementById('message').value;
+      const from = document.getElementById('from').value;
+      const params = new URLSearchParams({ to, message, from });
+      window.location.href = `card.html?${params.toString()}`;
+    }
+  </script>
+</body>
+</html>
